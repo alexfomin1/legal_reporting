@@ -3,15 +3,23 @@ from docx import Document
 from docx.shared import Pt, RGBColor, Mm, Cm
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
+print('!!! Формат названия отчета: Отчет 100 тыс. дд.мм.гггг.xlsx !!!')
+print()
+b_pr = input('Введите дату текущего отчета (дд.мм.гггг): ')
+b_pr = 'Отчет 100 тыс. ' + b_pr + '.xlsx'
+
+b_tod = input('Введите дату текущего отчета (дд.мм.гггг): ')
+b_tod = 'Отчет 100 тыс. ' + b_tod + '.xlsx'
+
 #введение таблицы
-b_tod = 'Отчет 100 тыс. 08.06.2022.xlsx'
+#b_tod = 'Отчет 100 тыс. 08.06.2022.xlsx'
 book_tod = xlrd.open_workbook(b_tod)
 sd = {}
 for s in book_tod.sheets():
     sd[s.name] = s
 sheet_tod = sd['Лист1']
 
-b_pr = 'Отчет 100 тыс. 01.06.2022.xlsx'
+#b_pr = 'Отчет 100 тыс. 01.06.2022.xlsx'
 book_pr = xlrd.open_workbook(b_pr)
 sd1 = {}
 for s in book_pr.sheets():
@@ -40,8 +48,7 @@ date_pr = b_pr.split()
 date_pr = date_pr[3].split('.')
 del date_pr[-1]
 date_pr = '.'.join(date_pr)
-#date_tod = input('Введите дату отчета: ')
-#date_prev = input('Введите дату предыдущего отчета: ')
+
 
 #открытие документа
 document = Document()
